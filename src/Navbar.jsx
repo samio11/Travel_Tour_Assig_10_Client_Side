@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import auth from './fireBaseConfig/firebase';
+import { AuthContent } from './AuthFile/AuthData';
 
 const Navbar = () => {
+    console.log(auth)
+    const data = useContext(AuthContent);
+    console.log(data)
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -51,10 +56,33 @@ const Navbar = () => {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
+
+                <div className='navbar-end gap-2'>
+                    <div className="dropdown dropdown-end flex justify-end items-center">
+                        <div>
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img
+                                        alt="Tailwind CSS Navbar component"
+                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <ul
+                                tabIndex={0}
+                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                                <li>
+                                    <a className="justify-between">
+                                        name
+                                        <span className="badge">New</span>
+                                    </a>
+                                </li>
+                                <li><button className='btn btn-sm btn-outline'>LogOut</button></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+            </div >
         </div>
     );
 };
