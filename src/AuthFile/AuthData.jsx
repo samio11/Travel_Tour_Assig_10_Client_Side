@@ -14,7 +14,7 @@ const AuthData = ({children}) => {
                 unSubscribe();
             }
         })
-    },[])
+    },[user])
 
     const createUser = (email,password) =>{
         return createUserWithEmailAndPassword(auth,email,password)

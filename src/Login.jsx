@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import { AuthContent } from './AuthFile/AuthData';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const {loginUser} = useContext(AuthContent);
@@ -96,7 +97,7 @@ const Login = () => {
                     </button>
                 </div>
                 <p className="text-xs text-center sm:px-6 text-gray-600">Don't have an account?
-                    <a rel="noopener noreferrer" href="#" className="underline text-gray-800">Sign up</a>
+                   <Link className='text-xs font-bold' to={'/register'}>Register</Link>
                 </p>
             </div>
         </div>
