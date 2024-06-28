@@ -38,6 +38,20 @@ const Navbar = () => {
                 Home
             </NavLink>
         </li>
+
+        {
+            user &&
+            <li>
+            <NavLink
+                to="/addTour"
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-red-500 underline" : ""
+                }
+            >
+                Add Tourists Spot
+            </NavLink>
+        </li>
+        }
        
     </>
     return (
@@ -82,15 +96,15 @@ const Navbar = () => {
                     user?<>
                     <div className="dropdown dropdown-end flex justify-end items-center">
                         <div>
-                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div tabIndex={2} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
                                     <img
-                                        alt="Tailwind CSS Navbar component"
-                                        src={user.photoURL} />
+                                        alt="loading"
+                                        src={user.photoURL || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'} />
                                 </div>
                             </div>
                             <ul
-                                tabIndex={0}
+                                tabIndex={2}
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                                 <li>
                                     <a className="justify-between">

@@ -3,6 +3,8 @@ import MainRoot from "../Roots/MainRoot";
 import Home from "../Home/Home";
 import Login from "../Login";
 import Register from "../Register";
+import PrivateRoute from "../PrivateRoute";
+import AddTourist from "../AddTourist";
 
 const Web_paths = createBrowserRouter([
     {
@@ -20,6 +22,10 @@ const Web_paths = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/addTour',
+                element: <PrivateRoute><AddTourist></AddTourist></PrivateRoute>
             }
         ]
     }
