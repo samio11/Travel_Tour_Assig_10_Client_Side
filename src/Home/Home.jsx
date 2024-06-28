@@ -10,14 +10,22 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Typewriter } from 'react-simple-typewriter';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Country from './Country';
 
 const Home = () => {
     const [totalTourPlan, setTotalTourPlan] = useState([]);
+    const [country,setCountry] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/travel_info')
             .then(res => res.json())
             .then(data => setTotalTourPlan(data))
     }, [])
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/country')
+        .then(res => res.json())
+        .then(data => setCountry(data))
+    },[])
     console.log(totalTourPlan)
     return (
         <div>
@@ -101,6 +109,15 @@ const Home = () => {
                         </div>
                     ))
                 }
+            </div>
+            {/* country section */}
+            <div className='text-center my-5'>
+                  <h2 className='font-bold text-3xl'>Top Visited <span className='text-red-700'>Country</span></h2>
+            </div>
+            <div className='my-5 grid grid-cols-1 md:grid-cols-3 gap-3'>
+                 {
+                    country?.map((x,idx)=><Country key={idx} country={x}></Country>)
+                 }
             </div>
         </div>
     );
