@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContent } from './AuthFile/AuthData';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 
 const MyTourList = () => {
     const [userData, setUserData] = useState([]);
@@ -11,6 +13,53 @@ const MyTourList = () => {
             .then(data => setUserData(data))
     }, [email])
     console.log(userData)
+
+    const handleDelete = id => {
+        console.log(id);
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You won't be able to restore it",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/travel_info/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        setUserData(userData.filter(i => i._id !== id))
+                        swalWithBootstrapButtons.fire({
+                            title: "Deleted!",
+                            text: "Your Tour List deleted.",
+                            icon: "success"
+                        });
+                    })
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "Your Tour was not cancelled)",
+                    icon: "error"
+                });
+            }
+        });
+    }
+
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -46,13 +95,29 @@ const MyTourList = () => {
                                         </div>
                                     </td>
                                     <td>
-                                       {item.location}
+                                        {item.location}
                                         <br />
                                         <span className="badge badge-ghost badge-sm">{item.averageCost}$</span>
                                     </td>
-                                    <td>Purple</td>
+                                    <td>
+                                        <button className="btn" onClick={() => document.getElementById('my_modal_5').showModal()}>open modal</button>
+                                        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                                            <div className="modal-box">
+                                                <h3 className="font-bold text-lg">{item.touristSpotName}</h3>
+                                                <p className="py-4">Press ESC key or click the button below to close</p>
+                                                <div className="modal-action">
+                                                    <form method="dialog">
+                                                        {/* if there is a button in form, it will close the modal */}
+                                                        <button className="btn">Close</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </dialog>
+
+
+                                    </td>
                                     <th>
-                                        <button className="btn btn-ghost btn-xs">details</button>
+                                        <button onClick={() => handleDelete(item._id)} className='btn btn-outline'>Delete</button>
                                     </th>
                                 </tr>
                             ))
