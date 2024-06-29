@@ -131,7 +131,7 @@ const Home = () => {
             <div className='my-4 flex flex-col md:flex-row justify-center items-center gap-2'>
 
                 <div className='w-full lg:w-[50%]'>
-                  <Lottie className='h-[300px]' animationData={faq}></Lottie>
+                    <Lottie className='h-[300px]' animationData={faq}></Lottie>
                 </div>
                 <div className='w-full lg:w-[45%]'>
                     <div className="join join-vertical w-full">
@@ -161,43 +161,49 @@ const Home = () => {
             </div>
             {/* Contract US  */}
             <div className='mt-4 mb-4 flex justify-center items-center'>
-                  <span className='text-3xl text-red-500 font-bold'>Contact Us</span>
+                <span className='text-3xl text-red-500 font-bold'>Contact Us</span>
             </div>
             <div className='my-4 flex flex-col md:flex-row-reverse justify-center items-center gap-4'>
                 <div className='w-full md:w-[50%]'>
-                  <Lottie className='h-[300px]' animationData={cont}></Lottie>
+                    <Lottie className='h-[300px]' animationData={cont}></Lottie>
                 </div>
                 <div className='w-full md:w-[45%]'>
-                <div className="flex flex-col items-center justify-center light">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          Subscribe to Our New Updates
-        </h2>
+                    <div className="flex flex-col items-center justify-center light">
+                        <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
+                            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                                Subscribe to Our New Updates
+                            </h2>
 
-        <form className="flex flex-col">
-          <input
-            type="email"
-            className="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-            placeholder="Enter your email address"
-          />
+                            <form className="flex flex-col">
+                                <input
+                                    type="email"
+                                    className="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                                    placeholder="Enter your email address"
+                                />
 
-          <button
-            type="submit"
-            className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
-          >
-            Subscribe
-          </button>
-        </form>
+                                <button
+                                    type="submit"
+                                    className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
+                                >
+                                    Subscribe
+                                </button>
+                            </form>
 
-        <div className="flex justify-center mt-4">
-          <a href="#" className="text-sm text-gray-600 hover:underline">
-            Privacy Policy
-          </a>
-        </div>
-      </div>
-    </div>
+                            <div className="flex justify-center mt-4">
+                                <a href="#" className="text-sm text-gray-600 hover:underline">
+                                    Privacy Policy
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            {/* footer */}
+            <footer className="footer footer-center bg-base-300 text-base-content p-4">
+                <aside>
+                    <p>Copyright © ${new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+                </aside>
+            </footer>
         </div>
     );
 };
