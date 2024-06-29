@@ -35,17 +35,17 @@ const Web_paths = createBrowserRouter([
             {
                 path: '/viewDetail/:id',
                 element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/travel_info/${params.id}`)
+                loader: ({params})=> fetch(`https://server-side-rkvd32tt1-samios-projects.vercel.app/travel_info/${params.id}`)
             },
             {
                 path: '/countryDetails/:country',
                 element: <PrivateRoute><ViewCountry></ViewCountry></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/country_info/${params.country}`)
+                loader: ({params})=> fetch(`https://server-side-rkvd32tt1-samios-projects.vercel.app/country_info/${params.country}`)
             },
             {
                 path: '/allTourSpot',
                 element: <AllTourSpot></AllTourSpot>,
-                loader: ()=> fetch('http://localhost:5000/travel_info')
+                loader: ()=> fetch('https://server-side-rkvd32tt1-samios-projects.vercel.app/travel_info')
             },
             {
                 path: '/myTourList',
@@ -54,7 +54,7 @@ const Web_paths = createBrowserRouter([
             {
                 path: '/edit_tour/:id',
                 element: <PrivateRoute><EditTourInfo></EditTourInfo></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/travel_info/${params.id}`)
+                loader: ({params})=> fetch(`https://server-side-rkvd32tt1-samios-projects.vercel.app/travel_info/${params.id}`)
             }
         ]
     }

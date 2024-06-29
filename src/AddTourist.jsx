@@ -33,7 +33,7 @@ const AddTourist = () => {
       userName,
     };
     console.log(formData);
-     fetch('http://localhost:5000/travel_info',{
+     fetch('https://server-side-rkvd32tt1-samios-projects.vercel.app/travel_info',{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

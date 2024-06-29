@@ -20,13 +20,13 @@ const Home = () => {
     const [totalTourPlan, setTotalTourPlan] = useState([]);
     const [country, setCountry] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/travel_info')
+        fetch('https://server-side-rkvd32tt1-samios-projects.vercel.app/travel_info')
             .then(res => res.json())
             .then(data => setTotalTourPlan(data))
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:5000/country')
+        fetch('https://server-side-rkvd32tt1-samios-projects.vercel.app/country')
             .then(res => res.json())
             .then(data => setCountry(data))
     }, [])

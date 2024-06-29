@@ -10,7 +10,7 @@ const MyTourList = () => {
     const { email } = user
     const navigate = useNavigate();
     useEffect(() => {
-        fetch(`http://localhost:5000/my_tour/${email}`)
+        fetch(`https://server-side-rkvd32tt1-samios-projects.vercel.app/my_tour/${email}`)
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [email])
@@ -35,7 +35,7 @@ const MyTourList = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/travel_info/${id}`, {
+                fetch(`https://server-side-rkvd32tt1-samios-projects.vercel.app/travel_info/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())

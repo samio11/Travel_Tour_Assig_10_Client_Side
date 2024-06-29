@@ -34,7 +34,7 @@ const EditTourInfo = () => {
             totalVisitorsPerYear,
         };
         console.log(formData)
-        fetch(`http://localhost:5000/travel_info/${data._id}`, {
+        fetch(`https://server-side-rkvd32tt1-samios-projects.vercel.app/travel_info/${data._id}`, {
 
             method: 'PUT',
             headers: {
