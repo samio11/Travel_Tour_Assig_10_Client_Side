@@ -10,11 +10,13 @@ import ViewCountry from "../Home/ViewCountry";
 import AllTourSpot from "../AllTourSpot";
 import MyTourList from "../MyTourList";
 import EditTourInfo from "../EditTourInfo";
+import ErrorElement from "../ErrorElement";
 
 const Web_paths = createBrowserRouter([
     {
         path: '/',
         element: <MainRoot></MainRoot>,
+        errorElement: <ErrorElement></ErrorElement>,
         children: [
             {
                 path: '/',
