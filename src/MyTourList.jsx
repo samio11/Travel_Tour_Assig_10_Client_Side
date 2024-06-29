@@ -61,10 +61,6 @@ const MyTourList = () => {
         });
     }
 
-     const handleEdit = id =>{
-        console.log(id);
-        navigate(`/edit_tour/${id}`)
-     }
     return (
         <div>
             <div className="overflow-x-auto">

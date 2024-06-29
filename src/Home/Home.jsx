@@ -12,21 +12,23 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Country from './Country';
 import ThemeControl from './ThemeControl';
+import faq from '../faq.json'
+import Lottie from 'lottie-react';
 
 const Home = () => {
     const [totalTourPlan, setTotalTourPlan] = useState([]);
-    const [country,setCountry] = useState([])
+    const [country, setCountry] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/travel_info')
             .then(res => res.json())
             .then(data => setTotalTourPlan(data))
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch('http://localhost:5000/country')
-        .then(res => res.json())
-        .then(data => setCountry(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setCountry(data))
+    }, [])
     console.log(totalTourPlan)
     return (
         <div>
@@ -114,12 +116,48 @@ const Home = () => {
             </div>
             {/* country section */}
             <div className='text-center my-5'>
-                  <h2 className='font-bold text-3xl'>Top Visited <span className='text-red-700'>Country</span></h2>
+                <h2 className='font-bold text-3xl'>Top Visited <span className='text-red-700'>Country</span></h2>
             </div>
             <div className='my-5 grid grid-cols-1 md:grid-cols-3 gap-3'>
-                 {
-                    country?.map((x,idx)=><Country key={idx} country={x}></Country>)
-                 }
+                {
+                    country?.map((x, idx) => <Country key={idx} country={x}></Country>)
+                }
+            </div>
+            <div className='mt-2 mb-2 flex justify-center items-center'>
+                <span className='text-3xl text-red-500 font-bold'>FAQ</span>
+            </div>
+            <div className='my-4 flex flex-col md:flex-row justify-center items-center gap-2'>
+
+                <div className='w-full lg:w-[50%]'>
+                  <Lottie className='h-[300px]' animationData={faq}></Lottie>
+                </div>
+                <div className='w-full lg:w-[45%]'>
+                    <div className="join join-vertical w-full">
+                        <div className="collapse collapse-arrow join-item border-base-300 border">
+                            <input type="radio" name="my-accordion-4" defaultChecked />
+                            <div className="collapse-title text-xl font-medium">What services does your travel agency provide?</div>
+                            <div className="collapse-content">
+                                <p className='text-xs'>Our travel agency offers a wide range of services to ensure your travel experience is smooth and enjoyable. We handle flight bookings, hotel reservations, car rentals, vacation packages, cruise bookings, travel insurance, and customized itineraries.</p>
+                            </div>
+                        </div>
+                        <div className="collapse collapse-arrow join-item border-base-300 border">
+                            <input type="radio" name="my-accordion-4" />
+                            <div className="collapse-title text-xl font-medium">How do I book a trip with your travel agency?</div>
+                            <div className="collapse-content">
+                                <p className='text-xs'>Booking a trip with us is easy and convenient. You can book online through our website by selecting your destination and following the prompts.</p>
+                            </div>
+                        </div>
+                        <div className="collapse collapse-arrow join-item border-base-300 border">
+                            <input type="radio" name="my-accordion-4" />
+                            <div className="collapse-title text-xl font-medium">What should I do if I need to cancel or change my booking?</div>
+                            <div className="collapse-content">
+                                <p className='text-xs'>If you need to cancel or change your booking, please contact us as soon as possible. For cancellations, reach out to our customer service team by phone or email. Cancellation policies vary depending on the airline, hotel, or service provider, and our team will provide you with the specific terms and conditions and any applicable fees.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     );
