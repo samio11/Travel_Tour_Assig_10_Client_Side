@@ -9,6 +9,7 @@ import ViewDetails from "../ViewDetails";
 import ViewCountry from "../Home/ViewCountry";
 import AllTourSpot from "../AllTourSpot";
 import MyTourList from "../MyTourList";
+import EditTourInfo from "../EditTourInfo";
 
 const Web_paths = createBrowserRouter([
     {
@@ -49,6 +50,11 @@ const Web_paths = createBrowserRouter([
             {
                 path: '/myTourList',
                 element: <PrivateRoute><MyTourList></MyTourList></PrivateRoute>
+            },
+            {
+                path: '/edit_tour/:id',
+                element: <PrivateRoute><EditTourInfo></EditTourInfo></PrivateRoute>,
+                loader: ({params})=> fetch(`http://localhost:5000/travel_info/${params.id}`)
             }
         ]
     }

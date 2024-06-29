@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContent } from './AuthFile/AuthData';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+import { Link, useNavigate } from 'react-router-dom';
 
 const MyTourList = () => {
     const [userData, setUserData] = useState([]);
     const { user } = useContext(AuthContent);
     const { email } = user
+    const navigate = useNavigate();
     useEffect(() => {
         fetch(`http://localhost:5000/my_tour/${email}`)
             .then(res => res.json())
@@ -59,7 +61,10 @@ const MyTourList = () => {
         });
     }
 
-
+     const handleEdit = id =>{
+        console.log(id);
+        navigate(`/edit_tour/${id}`)
+     }
     return (
         <div>
             <div className="overflow-x-auto">
@@ -100,21 +105,7 @@ const MyTourList = () => {
                                         <span className="badge badge-ghost badge-sm">{item.averageCost}$</span>
                                     </td>
                                     <td>
-                                        <button className="btn" onClick={() => document.getElementById('my_modal_5').showModal()}>open modal</button>
-                                        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                                            <div className="modal-box">
-                                                <h3 className="font-bold text-lg">{item.touristSpotName}</h3>
-                                                <p className="py-4">Press ESC key or click the button below to close</p>
-                                                <div className="modal-action">
-                                                    <form method="dialog">
-                                                        {/* if there is a button in form, it will close the modal */}
-                                                        <button className="btn">Close</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </dialog>
-
-
+                                    <Link to={`/edit_tour/${item._id}`} className='btn btn-outline'>Edit</Link>
                                     </td>
                                     <th>
                                         <button onClick={() => handleDelete(item._id)} className='btn btn-outline'>Delete</button>
@@ -122,38 +113,6 @@ const MyTourList = () => {
                                 </tr>
                             ))
                         }
-
-
-
-
-                        {/* <tr>
-
-                            <td>
-                                <div className="flex items-center gap-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle h-12 w-12">
-                                            <img
-                                                src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
-                                                alt="Avatar Tailwind CSS Component" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="font-bold">Hart Hagerty</div>
-                                        <div className="text-sm opacity-50">United States</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                Zemlak, Daniel and Leannon
-                                <br />
-                                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                            </td>
-                            <td>Purple</td>
-                            <th>
-                                <button className="btn btn-ghost btn-xs">details</button>
-                            </th>
-                        </tr> */}
-
                     </tbody>
                 </table>
             </div>
