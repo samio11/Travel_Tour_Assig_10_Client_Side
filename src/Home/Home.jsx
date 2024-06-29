@@ -11,6 +11,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Country from './Country';
+import ThemeControl from './ThemeControl';
 
 const Home = () => {
     const [totalTourPlan, setTotalTourPlan] = useState([]);
@@ -29,6 +30,7 @@ const Home = () => {
     console.log(totalTourPlan)
     return (
         <div>
+            <ThemeControl></ThemeControl>
             <div className='w-full'>
                 <Swiper
                     spaceBetween={30}

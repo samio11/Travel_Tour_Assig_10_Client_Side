@@ -1,9 +1,13 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const ViewCountry = () => {
     const countryData = useLoaderData();
+    const navigate = useNavigate()
     console.log(countryData);
+    const handleOneCountry = (id) =>{
+      navigate(`/viewDetail/${id}`)
+    }
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             {
@@ -24,7 +28,7 @@ const ViewCountry = () => {
                             <div className="badge badge-secondary badge-outline">{x.averageCost}$     {x.travelTime}</div>
                             <p className='text-xs font-bold'>Season:- {x.seasonality}</p>
                             <div className="card-actions justify-center">
-                            <button className="btn btn-wide btn-outline btn-secondary">View More</button>
+                            <button onClick={()=>handleOneCountry(x._id)} className="btn btn-wide btn-outline btn-secondary">View More</button>
                             </div>
                         </div>
                     </div>
