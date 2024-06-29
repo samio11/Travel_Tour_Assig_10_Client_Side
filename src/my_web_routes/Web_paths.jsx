@@ -6,6 +6,7 @@ import Register from "../Register";
 import PrivateRoute from "../PrivateRoute";
 import AddTourist from "../AddTourist";
 import ViewDetails from "../ViewDetails";
+import ViewCountry from "../Home/ViewCountry";
 
 const Web_paths = createBrowserRouter([
     {
@@ -32,6 +33,11 @@ const Web_paths = createBrowserRouter([
                 path: '/viewDetail/:id',
                 element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
                 loader: ({params})=> fetch(`http://localhost:5000/travel_info/${params.id}`)
+            },
+            {
+                path: '/countryDetails/:country',
+                element: <PrivateRoute><ViewCountry></ViewCountry></PrivateRoute>,
+                loader: ({params})=> fetch(`http://localhost:5000/country_info/${params.country}`)
             }
         ]
     }

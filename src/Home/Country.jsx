@@ -1,12 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Country = ({ country }) => {
+    const navigate = useNavigate();
     console.log(country)
-    const handleCountry = (id) => {
-      console.log(id)
+    const handleCountry = (name) => {
+      console.log(name)
+      navigate(`/countryDetails/${name}`)
     }
     return (
-        <div onClick={()=>handleCountry(country._id)} className="p-4 shadow-md bg-gray-50 text-gray-800">
+        <div onClick={()=>handleCountry(country.country_name)} className="p-4 shadow-md bg-gray-50 text-gray-800">
             <div className="flex justify-between pb-4 border-bottom">
                 <div className="flex items-center">
                 </div>
